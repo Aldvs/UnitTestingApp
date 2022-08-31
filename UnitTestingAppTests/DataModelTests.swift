@@ -36,23 +36,40 @@ class DataModelTests: XCTestCase {
     }
     func testHighestVolumeShouldBeOneHundred() throws {
         //given дано
-        sut.setVolume(to: 100)
+        sut.setVolume(to: 101)
         
         //when что произошло?
         let volume = sut.volume
         
-        //then
+        //than
         XCTAssert(volume == 100, "Highest value should be equal 100")
     }
 
-    
     //тест производительности блока кода
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         measure {
             // Put the code you want to measure the time of here.
-            
+            sut.setVolume(to: 50)
         }
     }
 
+    func testNumberOneMustBeGreaterThanNumberTwo() throws {
+        let numberOne = 1
+        let numberTwo = 0
+        
+        let isGreater = sut.greaterThanValue(x: numberOne, y: numberTwo)
+        
+        XCTAssert(isGreater, "The number one must be greater than number two")
+        
+    }
+    func testNumberOneNotBeGreaterThanNumberTwo() throws {
+        let numberOne = 1
+        let numberTwo = 1
+        
+        let isGreater = sut.greaterThanValue(x: numberOne, y: numberTwo)
+        
+        XCTAssert(!isGreater, "The number one must be greater than number two")
+
+    }
 }
