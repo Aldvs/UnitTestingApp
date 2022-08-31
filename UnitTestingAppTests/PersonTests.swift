@@ -44,5 +44,26 @@ class PersonTests: XCTestCase {
         XCTAssertTrue(personWithFullName?.surname == "Bar")
     }
 
+    func testInitPersonWithDate() {
+        XCTAssertNotNil(person?.date)
+    }
+    
+    func testInitPersonWithImage() {
+        let image = UIImage(systemName: "person.crop.circle")
+        let imageData = image?.pngData()
+        
+        let person = Person(name: "Foo", phone: "Bar", image: imageData)
+        
+        XCTAssertNotNil(person.image)
+    }
+    
+    func testInitPersonWithFullNameAndImage() {
+        let image = UIImage(systemName: "person.crop.circle")
+        let imageData = image?.pngData()
+        
+        let person = Person(name: "Foo", surname: "Bar", phone: "Bar", image: imageData)
+        
+        XCTAssertNotNil(person.image)
+    }
 
 }
