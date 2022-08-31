@@ -13,17 +13,25 @@ class PersonTests: XCTestCase {
     var person: Person?
     var personWithFullName: Person?
     
+    var image: UIImage?
+    var imageData: Data?
+
 
     override func setUp() {
         super.setUp()
         person = Person(name: "Foo", phone: "Bar")
         personWithFullName = Person(name: "Foo", surname: "Bar", phone: "Bar")
+        image = UIImage(systemName: "person.crop.circle")
+        imageData = image?.pngData()
+
 
     }
 
     override func tearDown() {
         person = nil
         personWithFullName = nil
+        image = nil
+        imageData = nil
         super.tearDown()
     }
 
@@ -49,8 +57,6 @@ class PersonTests: XCTestCase {
     }
     
     func testInitPersonWithImage() {
-        let image = UIImage(systemName: "person.crop.circle")
-        let imageData = image?.pngData()
         
         let person = Person(name: "Foo", phone: "Bar", image: imageData)
         
@@ -58,8 +64,6 @@ class PersonTests: XCTestCase {
     }
     
     func testInitPersonWithFullNameAndImage() {
-        let image = UIImage(systemName: "person.crop.circle")
-        let imageData = image?.pngData()
         
         let person = Person(name: "Foo", surname: "Bar", phone: "Bar", image: imageData)
         
